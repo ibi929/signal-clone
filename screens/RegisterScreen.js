@@ -2,19 +2,20 @@ import React, { useLayoutEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Input, Button, Text, withTheme } from "react-native-elements";
+import { Input, Button, Text } from "react-native-elements";
 import { auth } from "../firebase";
 
 const RegisterScreen = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerBackTitle: "Back to Login",
     });
   }, [navigation]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
   const register = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
